@@ -10,6 +10,7 @@ import {RutaCrearJugadorComponent} from "./rutas/ruta-equipos/ruta-jugadores/rut
 import {RutaActualizarJugadorComponent} from "./rutas/ruta-equipos/ruta-jugadores/ruta-actualizar-jugador/ruta-actualizar-jugador.component";
 import {RutaComprarComponent} from "./rutas/ruta-comprar/ruta-comprar.component";
 import {RutaComprasComponent} from "./rutas/ruta-compras/ruta-compras.component";
+import {EstaLogeadoService} from "./servicios/guards/esta-logeado.service";
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,14 +29,21 @@ const routes: Routes = [
     {
         path:'equipos/crear',
         component:RutaCrearEquipoComponent,
+        canActivate:[
+            EstaLogeadoService
+        ]
     },
     {
         path:'equipos/:idEquipo/actualizar',
         component:RutaActualizarEquipoComponent,
+
     },
     {
         path:'equipo/:idEquipo/jugadores',
         component:RutaJugadoresComponent,
+        canActivate:[
+            EstaLogeadoService
+        ]
     },
     {
         path:'equipo/:idEquipo/jugador/crear',
@@ -53,9 +61,27 @@ const routes: Routes = [
         path:'comprase',
         component:RutaComprasComponent,
     },
-  { path: 'compras', loadChildren: './pages/compras/compras.module#ComprasPageModule' },
-  { path: 'comprar', loadChildren: './pages/comprar/comprar.module#ComprarPageModule' },
-  { path: 'equipos', loadChildren: './pages/equipos/equipos.module#EquiposPageModule' }
+    {
+        path: 'compras',
+        loadChildren: './pages/compras/compras.module#ComprasPageModule',
+        canActivate:[
+            EstaLogeadoService
+        ]
+    },
+    {
+        path: 'comprar',
+        loadChildren: './pages/comprar/comprar.module#ComprarPageModule',
+        canActivate:[
+            EstaLogeadoService
+        ]
+    },
+    {
+        path: 'equipos',
+        loadChildren: './pages/equipos/equipos.module#EquiposPageModule',
+        canActivate:[
+            EstaLogeadoService
+        ]
+    }
 
 ];
 
