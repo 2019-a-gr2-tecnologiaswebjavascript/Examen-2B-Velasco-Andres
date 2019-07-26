@@ -6,6 +6,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ComprasPage } from './compras.page';
+import {
+    MatButtonModule,
+    MatDatepickerModule, MatExpansionModule, MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatRadioModule
+} from "@angular/material";
 
 const routes: Routes = [
   {
@@ -16,10 +24,18 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
+      CommonModule,
+      FormsModule,
+      IonicModule,
+      MatInputModule,
+      MatMenuModule,
+      MatButtonModule,
+      MatDatepickerModule,
+      MatRadioModule,
+      MatNativeDateModule,
+      MatIconModule,
+      MatExpansionModule,
+      RouterModule.forChild(routes)
   ],
   declarations: [ComprasPage]
 })

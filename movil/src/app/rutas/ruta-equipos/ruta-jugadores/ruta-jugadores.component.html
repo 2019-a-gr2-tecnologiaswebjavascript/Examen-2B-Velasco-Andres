@@ -22,16 +22,22 @@
             <input matInput name="busqueda" [(ngModel)]="nombreBusqueda" placeholder="Buscar por nombre">
           </mat-form-field>
         </form>
-        <ion-list>
-          <ion-item *ngFor="let jugador of jugadores">
-            <ion-label>{{jugador.nombre}}</ion-label>
-            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="presentarAlertaEliminar(jugador)">Eliminar</button>
-            </mat-menu>
-          </ion-item>
 
-        </ion-list>
+        <ion-card *ngFor="let jugador of jugadores" style="margin-top: 10px">
+          <ion-card-header>
+            <ion-item>
+              <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="presentarAlertaEliminar(jugador)">Eliminar</button>
+              </mat-menu>
+              <ion-card-title>{{jugador.nombre}}</ion-card-title>
+            </ion-item>
+            <ion-item>
+              <ion-label>{{jugador.poderEspecialDos}}</ion-label>
+                <ion-badge color="secondary">{{jugador.goles}}</ion-badge>
+            </ion-item>
+          </ion-card-header>
+        </ion-card>
       </ion-col>
       <ion-col size="1"></ion-col>
     </ion-row>

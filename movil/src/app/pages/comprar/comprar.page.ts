@@ -46,6 +46,7 @@ export class ComprarPage implements OnInit {
 
     formControl = new FormControl('', [
         Validators.required,
+        Validators.email,
         Validators.min(0),
     ]);
 
@@ -83,8 +84,9 @@ export class ComprarPage implements OnInit {
       }
       let idFactura = 0;
       // Llamar al servicio de auth
-      //this.factura.fkUsuario=this._authService.usuario.id;
-      this.factura.fkUsuario=1;
+      this.factura.fkUsuario=this._authService.usuario.id;
+      //this.factura.fkUsuario=1;
+      this.factura.total = this.obtenerTotal();
       //this.factura.jugadores = this._carritoService.listaGeneral;
 
       // PRIMERO CREAMOS LA FACTURA

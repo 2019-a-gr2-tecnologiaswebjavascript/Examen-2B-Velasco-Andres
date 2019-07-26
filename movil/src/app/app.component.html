@@ -3,29 +3,30 @@
         <ion-header>
             <ion-toolbar translucent>
                 <ion-title>Menu</ion-title>
-                <ion-title>{{nombreUsuario()}}</ion-title>
-
             </ion-toolbar>
         </ion-header>
         <ion-content>
             <ion-list>
                 <ion-item>
+                    <ion-label *ngIf="estaLogeado()">Bienvenido: {{nombreUsuario()}}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="!estaLogeado()">
                     <ion-icon name="person" slot="start"></ion-icon>
                     <ion-label [routerLink]="['/','login']">Login</ion-label>
                 </ion-item>
-                <ion-item>
+                <ion-item *ngIf="!estaLogeado()">
                     <ion-icon name="person-add" slot="start"></ion-icon>
                     <ion-label [routerLink]="['/','registro']">Registro</ion-label>
                 </ion-item>
-                <ion-item>
+                <ion-item *ngIf="estaLogeado()">
                     <ion-icon name="football" slot="start"></ion-icon>
                     <ion-label [routerLink]="['/','equipos']">Administrar grupos</ion-label>
                 </ion-item>
-                <ion-item>
+                <ion-item *ngIf="estaLogeado()">
                     <ion-icon name="cart" slot="start"></ion-icon>
                     <ion-label [routerLink]="['/','compras']">Revisar Compras</ion-label>
                 </ion-item>
-                <ion-item>
+                <ion-item *ngIf="estaLogeado()">
                     <ion-icon name="card" slot="start"></ion-icon>
                     <ion-label [routerLink]="['/','comprar']">Comprar</ion-label>
                 </ion-item>

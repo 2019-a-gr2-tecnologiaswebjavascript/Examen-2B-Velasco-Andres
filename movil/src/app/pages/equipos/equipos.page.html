@@ -26,17 +26,23 @@
             <input matInput name="busqueda" [(ngModel)]="nombreBusqueda" placeholder="Buscar por nombre">
           </mat-form-field>
         </form>
-        <ion-list>
-          <ion-item *ngFor="let equipo of equipos">
-            <ion-label>{{equipo.nombre}}</ion-label>
-            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item [routerLink]="['','equipo',equipo.id,'jugadores']">Jugadores</button>
-              <button mat-menu-item (click)="presentarAlertaEliminar(equipo)">Eliminar</button>
-            </mat-menu>
-          </ion-item>
+          <ion-card *ngFor="let equipo of equipos" style="margin-top: 10px">
+              <ion-card-header>
+                  <ion-item>
+                      <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+                      <mat-menu #menu="matMenu">
+                          <button mat-menu-item [routerLink]="['','equipo',equipo.id,'jugadores']">Jugadores</button>
+                          <button mat-menu-item (click)="presentarAlertaEliminar(equipo)">Eliminar</button>
+                      </mat-menu>
+                      <ion-card-title>{{equipo.nombre}}</ion-card-title>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label>{{equipo.liga}}</ion-label>
+                      <ion-badge color="secondary">{{equipo.copasInt}}</ion-badge>
 
-        </ion-list>
+                  </ion-item>
+              </ion-card-header>
+          </ion-card>
       </ion-col>
       <ion-col size="1"></ion-col>
     </ion-row>
