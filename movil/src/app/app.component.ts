@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {AuthHttpService} from "./servicios/http/http-auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private readonly _authHttpService:AuthHttpService,
+    private readonly _router:Router
   ) {
     this.initializeApp();
   }
@@ -36,4 +38,10 @@ export class AppComponent {
   nombreUsuario(){
       return this._authHttpService.usuario.nombre;
   }
+
+  salir(){
+    this._authHttpService.estaLogeado = false;
+    this._router.navigate(['','login']);
+  }
+
 }
