@@ -3,7 +3,11 @@
     <ion-row>
       <ion-col  [size]="1"></ion-col>
       <ion-col align-self-center="">
-        <h2>Ingreso al sistema</h2>
+
+        <h2 class="ion-align-items-center">Ingreso al sistema:</h2>
+        <div>
+          <img src="https://images.vexels.com/media/users/3/132247/isolated/preview/a7d5804976d548749c83aeaefdbce085-soccer-player-silhouette-7-by-vexels.png" alt="img" style="width: 100%;height: auto">
+        </div>
         <form
                 #formulario = "ngForm"
                 (ngSubmit)="login(formulario)"
